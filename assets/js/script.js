@@ -2,110 +2,63 @@
 var quizContainer = document.getElementById("quiz");
 var resultsContainer = document.getElementById("score");
 var timeLeftEl = document.getElementById("")
+var feedback = document.getElementById("#feedback");
 
-//Create objects within an array for multiple choice questions
-
-
-
+//WHEN I click the start button
+    //connect button from HTML here
 var startQuiz = function(){
     let score = 0;
     let timeLeft = 75;
     var correct = 0;
     var incorrect = 0;
-    var question = document.createElement("h2", question);
-    var answers =  document.createElement("button", answers);
+   
 
-    
+//Create objects within an array for multiple choice questions
     var codeQuestions = [
         {
             question: "Commonly used data types do NOT inclue:",
-            answers: {
-                a: "strings",
-                b: "booleans",
-                c: "alerts",
-                d: "numbers",
-            },
+            answers: [
+                "strings",
+                "booleans",
+                "alerts",
+                "numbers",
+            ],
              rightAnswer: "c"
         
         },
         {
             question: "Arrays in JavScript can be used to store _________.",
-            answers:{
-                a: "numbers and strings",
-                b: "other arrays",
-                c: "booleans",
-                d: "all of the above",
-            },
+            answers:[
+                "numbers and strings",
+                "other arrays",
+                "booleans",
+                "all of the above",
+                ],
             rightAnswer: "d"
         },
         { 
             question: "String values must be enclosed within ______ when being assigned to variables.",
-            answers: { 
-                a: "commas",
-                b: "curly brackets",
-                c: "quotes",
-                d: "parenthesis",
-            },
+            answers:[ 
+                "commas",
+                "curly brackets",
+                 "quotes",
+                 "parenthesis",
+             ],
         rightAnswer: "d"
         },
         {
             question: "A very useful school use during the development and debugging for printing content to the debugger is:",
-            answers: { 
-                a: "JavaScript",
-                b: "terminal/bash",
-                c: "for loops",
-                d: "console.log",
-            },
+            answers: [
+                 "JavaScript",
+                 "terminal/bash",
+                 "for loops",
+                 "console.log",
+            ],
         rightAnswer: "d",
         }
         
     ];
-    document.appendChild(question);
-    document.appendChild(answers);
-function showQuestions (codeQuestions, quizContainer) {
-    var output = [];
-    var answers;
-
-    for(var i=0; i<codeQuestions.length; i++){
-        var userSelect = document.textContent(questions[i].answers)
-
-        if(userSelect == questions[i].answers){
-            score ++
-            textContent="Correct!";
-        }
-        else {
-            textContent = "Incorrect!";
-        }
-
- 
-};
-
-
-
-};
-
-
-}
-startQuiz();
-
-//displayquiz
-
-
-//WHEN I click the start button
-    //connect button from HTML here
-
-
-//Click the HighScore button to see the highscore button 
-    //local storage for HTML
-
-//THEN a timer starts and I am presented with a question
-
-//DO NOT USE A LOOP FOR QUESTIONS
-    //1. count down
-    //2. stop quiz when times up
-    //3. decremenet goes down when question is answered incorrectly
-
-//WHEN I answer a question
+    //WHEN I answer a question
     //if question is correct
     //apply the button effect to the switch effect 
         //add submit event listener to check button
@@ -124,6 +77,51 @@ startQuiz();
         //THEN I am presented with another question
         //ideas: function and return
         //switch 
+
+//create a function to generate one question at a time
+function showQuestions(event) {
+//create element to display the question and the answers
+if (i === codeQuestions.length) {
+    //restart quiz
+    quizReset();
+
+}
+//assign text content to the questions and answers
+document.getElementById("questions").textContent = codeQuestions[i]["question"];
+document.getElementById("answerA").textContent = codeQuestions[i]["answers"][0];
+document.getElementById("answerB").textContent = codeQuestions[i]["answers"][1];
+document.getElementById("answerC").textContent = codeQuestions[i]["answers"][2];
+document.getElementById("answerD").textContent = codeQuestions[i]["answers"][3];
+//add eventListeners
+document.getElementById("startButton").addEventListener("click", showQuestions);
+//check to see if question was correct
+
+};
+showQuestions();
+};
+
+
+
+
+
+
+//displayquiz
+
+
+
+
+
+//Click the HighScore button to see the highscore button 
+    //local storage for HTML
+
+//THEN a timer starts and I am presented with a question
+
+//DO NOT USE A LOOP FOR QUESTIONS
+    //1. count down
+    //2. stop quiz when times up
+    //3. decremenet goes down when question is answered incorrectly
+
+
     
 
 
