@@ -1,0 +1,21 @@
+.intro {
+    font-size: 30px;
+    line-height: 1.3;
+    color: black;
+    text-align: center;
+}
+
+#submit {
+    background-color: cornflowerblue;
+    border-radius: 15%;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    padding-top: 5%;
+    display: float;
+    float: center;
+}
+
+*add colors
+*add hover for submit/start game button
+*button display for all buttons
+*style high  

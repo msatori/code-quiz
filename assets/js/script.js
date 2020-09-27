@@ -2,72 +2,115 @@
 var quizContainer = document.getElementById("quiz");
 var resultsContainer = document.getElementById("score");
 var submitButton = document.getElementById("submit");
+var timeLeftEl = document.getElementById("")
 //Create objects within an array for multiple choice questions
 var codeQuestions = [
     {
         question: "Commonly used data types do NOT inclue:",
         answers: {
-            1: "strings",
-            2: "booleans",
-            3: "alerts",
-            4: "numbers",
-     },
-         rightAnswer: "3"
+            a: "strings",
+            b: "booleans",
+            c: "alerts",
+            d: "numbers",
+        },
+         rightAnswer: "c"
     
     },
     {
         question: "Arrays in JavScript can be used to store _________.",
         answers:{
-            1: "numbers and strings",
-            2: "other arrays",
-            3: "booleans",
-            4: "all of the above",
+            a: "numbers and strings",
+            b: "other arrays",
+            c: "booleans",
+            d: "all of the above",
         },
         rightAnswer: ""
     },
     { 
         question: "String values must be enclosed within ______ when being assigned to variables.",
         answers: { 
-            1: "commas",
-            2: "curly brackets",
-            3: "quotes",
-            4: "parenthesis",
-    },
-
+            a: "commas",
+            b: "curly brackets",
+            c: "quotes",
+            d: "parenthesis",
+        },
     rightAnswer: ""
     },
-{
+    {
         question: "A very useful school use during the development and debugging for printing content to the debugger is:",
         answers: { 
-        1: "JavaScript",
-        2: "terminal/bash",
-        3: "for loops",
-        4: "console.log",
-},
+            a: "JavaScript",
+            b: "terminal/bash",
+            c: "for loops",
+            d: "console.log",
+        },
     rightAnswer: "",
-},
-
+    }
 ];
-
+console.log(codeQuestions);
 function buildQuiz() {
+    
+};
+
+function showQ () {
 
 };
 
-function showScore () {
-;
-}
+function showScore()
+
 
 
 //displayquiz
 buildQuiz();
-//GIVEN I am taking a code quiz
+
+
+
 //WHEN I click the start button
+    //connect button from HTML here
+
+
+//Click the HighScore button to see the highscore button 
+    //local storage for HTML
+
 //THEN a timer starts and I am presented with a question
+//DO NOT USE A LOOP FOR QUESTIONS
+    //1. count down
+    //2. stop quiz when times up
+    //3. decremenet goes down when question is answered incorrectly
+
 //WHEN I answer a question
-//THEN I am presented with another question
-//WHEN I answer a question incorrectly
-//THEN time is subtracted from the clock
-//WHEN all questions are answered or the timer reaches 0
-//THEN the game is over
+    //if question is correct
+    //apply the button effect to the switch effect 
+        //add submit event listener to check button
+        //feedback "Correct"
+        //goes to next question
+
+
+        //if answer is incorrect
+        //time is subtracted from the clock
+        //feedback "Wrong"
+        //if !=== deduct time from the quiz
+        //if timer is less than 0 then the quiz ends 
+    
+        //add feedback for correct or incorrect answers before moving to next question
+
+        //THEN I am presented with another question
+        //ideas: function and return
+        //switch 
+    
+
+
+
+
 //WHEN the game is over
+    //display "Quiz Complete"
+    //display score
+    //add textbox for initials
+    //add Submit button 
+    //Try again button 
+
 //THEN I can save my initials and score
+        //connect local storage 
+            //get user initials
+            //commit user initils and high score to DOM storage 
+
