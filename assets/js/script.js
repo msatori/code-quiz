@@ -1,68 +1,94 @@
 //Variables for Quiz
 var quizContainer = document.getElementById("quiz");
 var resultsContainer = document.getElementById("score");
-var submitButton = document.getElementById("submit");
 var timeLeftEl = document.getElementById("")
+
 //Create objects within an array for multiple choice questions
-var codeQuestions = [
-    {
-        question: "Commonly used data types do NOT inclue:",
-        answers: {
-            a: "strings",
-            b: "booleans",
-            c: "alerts",
-            d: "numbers",
-        },
-         rightAnswer: "c"
+
+
+
+var startQuiz = function(){
+    let score = 0;
+    let timeLeft = 75;
+    var correct = 0;
+    var incorrect = 0;
+    var question = document.createElement("h2", question);
+    var answers =  document.createElement("button", answers);
+
     
-    },
-    {
-        question: "Arrays in JavScript can be used to store _________.",
-        answers:{
-            a: "numbers and strings",
-            b: "other arrays",
-            c: "booleans",
-            d: "all of the above",
+    var codeQuestions = [
+        {
+            question: "Commonly used data types do NOT inclue:",
+            answers: {
+                a: "strings",
+                b: "booleans",
+                c: "alerts",
+                d: "numbers",
+            },
+             rightAnswer: "c"
+        
         },
-        rightAnswer: ""
-    },
-    { 
-        question: "String values must be enclosed within ______ when being assigned to variables.",
-        answers: { 
-            a: "commas",
-            b: "curly brackets",
-            c: "quotes",
-            d: "parenthesis",
+        {
+            question: "Arrays in JavScript can be used to store _________.",
+            answers:{
+                a: "numbers and strings",
+                b: "other arrays",
+                c: "booleans",
+                d: "all of the above",
+            },
+            rightAnswer: "d"
         },
-    rightAnswer: ""
-    },
-    {
-        question: "A very useful school use during the development and debugging for printing content to the debugger is:",
-        answers: { 
-            a: "JavaScript",
-            b: "terminal/bash",
-            c: "for loops",
-            d: "console.log",
+        { 
+            question: "String values must be enclosed within ______ when being assigned to variables.",
+            answers: { 
+                a: "commas",
+                b: "curly brackets",
+                c: "quotes",
+                d: "parenthesis",
+            },
+        rightAnswer: "d"
         },
-    rightAnswer: "",
-    }
-];
-console.log(codeQuestions);
-function buildQuiz() {
-    
+        {
+            question: "A very useful school use during the development and debugging for printing content to the debugger is:",
+            answers: { 
+                a: "JavaScript",
+                b: "terminal/bash",
+                c: "for loops",
+                d: "console.log",
+            },
+        rightAnswer: "d",
+        }
+        
+    ];
+    document.appendChild(question);
+    document.appendChild(answers);
+function showQuestions (codeQuestions, quizContainer) {
+    var output = [];
+    var answers;
+
+    for(var i=0; i<codeQuestions.length; i++){
+        var userSelect = document.textContent(questions[i].answers)
+
+        if(userSelect == questions[i].answers){
+            score ++
+            textContent="Correct!";
+        }
+        else {
+            textContent = "Incorrect!";
+        }
+
+ 
 };
 
-function showQ () {
+
 
 };
 
-function showScore()
 
-
+}
+startQuiz();
 
 //displayquiz
-buildQuiz();
-
 
 
 //WHEN I click the start button
@@ -73,6 +99,7 @@ buildQuiz();
     //local storage for HTML
 
 //THEN a timer starts and I am presented with a question
+
 //DO NOT USE A LOOP FOR QUESTIONS
     //1. count down
     //2. stop quiz when times up
@@ -112,5 +139,6 @@ buildQuiz();
 //THEN I can save my initials and score
         //connect local storage 
             //get user initials
-            //commit user initils and high score to DOM storage 
+            //commit user initils and high score
 
+//event listeners for quiz
