@@ -2,45 +2,54 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Code Quiz</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="./assets/css/style.css">
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
 
-    </head>
-    <header>
-        <nav class="header nav" id="navBar">
-            <ul>
-                <li id="highScore">View High Scores</li>
-                <li id="timer">Time : 0</li>
-            </ul>
-        </nav>
-    </header>
-    <body>
-        <div class="intro">
-            Welcome to the JavaScript Quiz!
-            For every question that you get wrong, 10 seconds will be removed from the question timer. 
-            Add your intials and high score to the scoresheet at the end!
-        </div>
-        <button type="button" id="startButton" class="btn">
-            
-        </div>
-        <div id="quiz">
-            <h2 id="questions"></h2>
-            <div id="answers">
-                <button type="button" class="btn" id="answerA"></button>
-                <button type="button" class="btn" id="answerB"></button>
-                <button type="button" class="btn" id="answerC"></button>
-                <button type="button" class="btn" id="answerD"></button>
-        </div>
-        <div id="feedback"></div>
-        </div>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Code Quiz</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./assets/css/style.css">
 
-        <script src="./assets/js/script.js" async defer></script>
-        <script src="./assets/js/questions.js"></script>
-    </body>
+</head>
+<header>
+    <nav class="header nav" id="navBar">
+        <ul>
+            <li id="highScore">View High Scores</li>
+            <li id="timer">Time : 00:00</li>
+        </ul>
+    </nav>
+</header>
+
+<body>
+    <div class="container">
+
+        <section id="intro-title">
+            <div class="title">
+                <h1> Welcome to the JavaScript Quiz!</h1>
+
+                For every question that you get wrong, 10 seconds will be removed from the question timer.
+                Add your intials and high score to the scoresheet at the end!
+            </div>
+            <div>
+                <button type="button" id="startButton" class="btn"></button>
+            </div>
+        </section>
+
+    </div>
+    <section id="quiz-section" class="hidden">
+
+        <h2 id="question-title"></h2>
+        <div id="answers"></div>
+        <div id="feedback" class="hide feedback"></div>
+    </div>
+    </div>
+
+    <script src="./assets/js/script.js" async defer></script>
+    <script src="./assets/js/questions.js"></script>
+</body>
+
 </html>

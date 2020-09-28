@@ -1,20 +1,24 @@
 //Variables for Quiz
 var quizContainer = document.getElementById("quiz");
 var resultsContainer = document.getElementById("score");
-var feedback = document.querySelector("#feedback");
-var timer = document.getElementById("timer");
-var answerA = document.getElementById("answerA");
-var answerB = document.getElementById("answerB");
-var answerC = document.getElementById("answerC");
-var answerD = document.getElementById("answerD");
-var answers = document.getElementById("answers");
-var i = 0;
+
+var feedbackEl = document.querySelector("#feedback");
+var timerEl = document.querySelector("#timer");
+var titleEl = document.querySelector("#question-title");
+var quizQuestionsEl = document.querySelector("#questions")
+var answersEl = document.querySelector("#answers");
+var currentQuestionIndex = 0;
 var timeLeft = 75;
+ var timerId;
 var score = 0;
 
 
 //create function to start quiz    
 var startQuiz = function () {
+
+    setTimer();
+    showQuestions();
+}
     //hide questions for front page w/submit button
     function setTimer() {
         var timerInt = setInterval(function () {
@@ -35,84 +39,71 @@ var startQuiz = function () {
 
     //create a function to generate one question at a time
     function showQuestions() {
-       
-        //create element to display the question and the answers
-        if (i === codeQuestions.length) {
-            //restart quiz
-            quizReset();
-        }
-        else {
-            //assign text content to the questions and answers
-            document.getElementById("questions").textContent = codeQuestions[i]["question"];
-            document.getElementById("answerA").textContent = codeQuestions[i]["answers"][0];
-            document.getElementById("answerB").textContent = codeQuestions[i]["answers"][1];
-            document.getElementById("answerC").textContent = codeQuestions[i]["answers"][2];
-            document.getElementById("answerD").textContent = codeQuestions[i]["answers"][3];
-        }
-        //check to see if question was correct
-        document.getElementById("answerA").addEventListener("click", function () {
-            if (codeQuestions[0].question , codeQuestions.answers[0] === codeQuestions[0].rightAnswer) {
-                feedback.textContent = "Correct!";
-                score++;
+        var currentQuestion = codeQuestions[currentQuestionIndex];
+
+        var titleEl = document.getElementById("question-title");
+        titleEl.textContent = currentQuestion.question;
+
+        answersEl.innerHTML = "";
+
+        //create loop for questions
+        currentQuestion.answers.forEach(function (answer, i) {
+            var answerNode = document.createElement("button");
+            answerNode.setAttribute("class", "answers");
+            answerNode.setAttribute("class", "answers");
+
+            answerNode.textContent = i + 1 + "." + choice;
+
+            //clicky boy
+            answerNode.onclick = answerClick;
+            answersEl.appendChild(answerNode);
+        });
+    }
+    function answerClick() {
+        //incorrect answer
+        if (this.value !== codeQuestions[currentQuestionIndex].rightAnswer) {
+            //take away ten seconds
+            timeLeft -= 10;
+
+                if (time<0) {
+                    time = 0;
+                }
+
+                timerEl.textContent = time;
+                
+                feedbackEl.textContent = "incorrect!";
+            }else {
+                feedbackEl.textContent("Correct!");
+                }
+            //show feedback for one second
+            feedbackEl.setAttribute("class", "feedback");
+            setTimeout(function () {
+                feedbackEl.setAttribute("class", "hide feedback");
+                
+            }, 1000);
+
+            //move to next question 
+            currentQuestionIndex ++;
+
+            //see if there are still questions left
+
+            if(currentQuestionIndex === codeQuestions.length) {
+                endQuiz();
+            }else {
+                    showQuestions();
+                }
             }
-            else {
-                feedback.textContent = "Incorrect!";
-                timeLeft -= 10;
-            }
-            i++;
-            showQuestions();
-        })
-
-    };
-
-    document.getElementById("answerA").addEventListener("click", function () {
-        if (codeQuestions[1].question , codeQuestions.answers[1] === codeQuestions[1].rightAnswer) {
-            feedback.textContent = "Correct!";
-            score++;
+        function endQuiz () {
+            //stop the time
+            clearInterval(timerId);
         }
-        else {
-            feedback.textContent = "Incorrect!";
-            timeLeft -= 10;
-        }
-        i++;
-        showQuestions();
-    })
-    document.getElementById("answerA").addEventListener("click", function () {
-        if (codeQuestions[2].question, codeQuestions.answers[2] === codeQuestions[2].rightAnswer) {
-            feedback.textContent = "Correct!";
-            score++;
-        }
-        else {
-            feedback.textContent = "Incorrect!";
-            timeLeft -= 10;
-        }
-        i++;
-        showQuestions();
-    })
+    
+    
 
-    document.getElementById("answerA").addEventListener("click", function () {
-        if (codeQuestions[3].question , codeQuestions.answers[3] === codeQuestions[3].rightAnswer) {
-            feedback.textContent = "Correct!";
-            score++;
-        }
-        else {
-            feedback.textContent = "Incorrect!";
-            timeLeft -= 10;
-        }
-        i++;
-        showQuestions();
-    })
-    document.getElementById("startButton").addEventListener("click", setTimer);
-    document.getElementById("startButton").addEventListener("click", showQuestions);
-};
 
-function endQuiz() {
-    var initialInput = document.createElement("input");
-    initialInput = ("type", "required");
+   
 
-}
-
-startQuiz();
+    
 //displayquiz
 
 //add eventListeners
