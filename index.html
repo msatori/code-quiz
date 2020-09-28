@@ -27,7 +27,7 @@
 <body>
     <div class="container">
 
-        <section id="intro-title">
+        <section id="intro-title" class="show">
             <div class="title">
                 <h1> Welcome to the JavaScript Quiz!</h1>
 
@@ -35,7 +35,7 @@
                 Add your intials and high score to the scoresheet at the end!
             </div>
             <div>
-                <button type="button" id="startButton" class="btn"></button>
+                <button type="button" id="startButton" class="btn">Start Quiz!</button>
             </div>
         </section>
 
@@ -45,6 +45,21 @@
         <h2 id="question-title"></h2>
         <div id="answers"></div>
         <div id="feedback" class="hide feedback"></div>
+        </section>
+
+    <section id="highscore-page" class="hidden">
+        <div id="high-score">
+            <h2>
+                Let's see how you did!
+            </h2>
+            <h3>
+                Your Score Is: <span id="score">0</span>
+            </h3>
+            <label for="insert-initials"> Put your initials here!</label>
+            <input type="text" name="intials-input" id="initials">
+            <button id="submit-initials" type="submit">Submit</button>
+        </div>
+    </section>
     </div>
     </div>
 

@@ -5,9 +5,22 @@
     text-align: center;
 }
 
+.show {
+    display: block;
+}
 
+.hide {
+    display: none;
+}
 
-*add colors
-*add hover for submit/start game button
-*button display for all buttons
-*style high  
+.hidden {
+    display: none;
+}
+
+#startButton {
+    display: block;
+    color: blueviolet;
+    background-color: cornsilk;
+    width: 50%;
+    height: 20px;
+}

@@ -1,39 +1,40 @@
 //Variables for Quiz
 var quizContainer = document.getElementById("quiz");
 var resultsContainer = document.getElementById("score");
-
+var introPage = document.querySelector("#intro-title");
+var quizPage = document.querySelector("#quiz-section");
+var finalScoreEl = document.querySelector("#score");
 var feedbackEl = document.querySelector("#feedback");
 var timerEl = document.querySelector("#timer");
 var titleEl = document.querySelector("#question-title");
 var quizQuestionsEl = document.querySelector("#questions")
 var answersEl = document.querySelector("#answers");
+var startButton = document.querySelector("#startButton");
+var submitButton = document.querySelector("#submit-initials");
 var currentQuestionIndex = 0;
 var timeLeft = 75;
- var timerId;
-var score = 0;
 
+var score = 0;
 
 //create function to start quiz    
 var startQuiz = function () {
+    introPage.setAttribute("class", "hide");
 
-    setTimer();
+    quizPage.setAttribute("class", "show");
+
+    timerId = setInterval(setTimer, 1000)
+    timer.textContent = time;
     showQuestions();
 }
     //hide questions for front page w/submit button
-    function setTimer() {
-        var timerInt = setInterval(function () {
-            timeLeft--;
-            timer.textContent = "Timer" + timeLeft;
 
-            if (timeLeft === 0) {
-                endQuiz();
-                alert("You're Outta Here")
-            }
-            else if (i === codeQuestions.length) {
-                clearInterval(timerInt);
-            }
-        }, 1000)
-        return (score)
+    function setTimer() {
+        time--;
+
+        timerEl.textContent = time;
+
+        if (time <=0)
+        endQuiz()
     }
 
 
@@ -52,7 +53,7 @@ var startQuiz = function () {
             answerNode.setAttribute("class", "answers");
             answerNode.setAttribute("class", "answers");
 
-            answerNode.textContent = i + 1 + "." + choice;
+            answerNode.textContent = i + 1 + "." + rightAnswer;
 
             //clicky boy
             answerNode.onclick = answerClick;
@@ -65,13 +66,13 @@ var startQuiz = function () {
             //take away ten seconds
             timeLeft -= 10;
 
-                if (time<0) {
-                    time = 0;
+                if (timeLeft<0) {
+                    timeLeft = 0;
                 }
 
                 timerEl.textContent = time;
                 
-                feedbackEl.textContent = "incorrect!";
+                feedbackEl.textContent = ("incorrect!");
             }else {
                 feedbackEl.textContent("Correct!");
                 }
@@ -96,10 +97,21 @@ var startQuiz = function () {
         function endQuiz () {
             //stop the time
             clearInterval(timerId);
+
+            var highScoreEl = document.querySelector("#highscore-section");
+            highScoreEl.setAttribute("class", "show");
+
+            //show final score
+            var finalScoreEl = document.querySelector("#score");
+            finalScoreEl.textContent = time;
+
+            //hide the questions
+            quizPage.setAttribute("class", "hide");
         }
     
     
 
+document.getElementById("startButton").addEventListener("click", showQuestions);
 
    
 
@@ -112,31 +124,3 @@ var startQuiz = function () {
 
 
 //Click the HighScore button to see the highscore button 
-    //local storage for HTML
-
-//THEN a timer starts and I am presented with a question
-
-//DO NOT USE A LOOP FOR QUESTIONS
-    //1. count down
-    //2. stop quiz when times up
-    //3. decremenet goes down when question is answered incorrectly
-
-
-
-
-
-
-
-//WHEN the game is over
-    //display "Quiz Complete"
-    //display score
-    //add textbox for initials
-    //add Submit button 
-    //Try again button 
-
-//THEN I can save my initials and score
-        //connect local storage 
-            //get user initials
-            //commit user initils and high score
-
-//event listeners for quiz
