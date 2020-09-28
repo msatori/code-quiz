@@ -1,39 +1,34 @@
 //Variables for Quiz
 var quizContainer = document.getElementById("quiz");
 var resultsContainer = document.getElementById("score");
-var timeLeftEl = document.getElementById("")
 var feedback = document.querySelector("#feedback");
+var timer = document.getElementById("timer");
 var answerA = document.getElementById("answerA");
 var answerB = document.getElementById("answerB");
 var answerC = document.getElementById("answerC");
 var answerD = document.getElementById("answerD");
 var answers = document.getElementById("answers");
 var i = 0;
+var timeLeft = 75;
+var score = 0;
 
+//create function to start quiz    
+var startQuiz = function(){
+//hide questions for front page w/submit button
 function setTimer() {
     var timerInt = setInterval(function(){
         timeLeft--;
-        timer.textContent = "Timer" + seconsLeft;
+        timer.textContent = "Timer" + timeLeft;
 
         if (timeLeft === 0) {
         endQuiz();
         }
-        else if (i ===codeQuestions.length) {
+        else if (i === codeQuestions.length) {
             clearInterval(timerInt);
         }
     }, 1000)
     return (score)
-    };
-
-
-    
-var startQuiz = function(){
-    let score = 0;
-    let timeLeft = 75;
-    var correct = 0;
-    var incorrect = 0;
-   
-
+    }
 //Create objects within an array for multiple choice questions
     var codeQuestions = [
         {
@@ -80,26 +75,7 @@ var startQuiz = function(){
       
     ];
     console.log(codeQuestions);
-    //WHEN I answer a question
-    //if question is correct
-    //apply the button effect to the switch effect 
-        //add submit event listener to check button
-        //feedback "Correct"
-        //goes to next question
-
-
-        //if answer is incorrect
-        //time is subtracted from the clock
-        //feedback "Wrong"
-        //if !=== deduct time from the quiz
-        //if timer is less than 0 then the quiz ends 
-    
-        //add feedback for correct or incorrect answers before moving to next question
-
-        //THEN I am presented with another question
-        //ideas: function and return
-        //switch 
-
+   
 //create a function to generate one question at a time
 function showQuestions() {
     answerA.hidden = false;
@@ -169,10 +145,13 @@ document.getElementById("answerA").addEventListener("click", function () {
     showQuestions();
 })
 document.getElementById("startButton").addEventListener("click", showQuestions);
+document.getElementById("startButton").addEventListener("click", setTimer);
 };
 
 function endQuiz(){
-    
+    var initialInput = document.createElement("input");
+    initialInput = ("type", "required");
+
 }
 
 startQuiz();
