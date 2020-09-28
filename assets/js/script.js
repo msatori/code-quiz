@@ -2,10 +2,31 @@
 var quizContainer = document.getElementById("quiz");
 var resultsContainer = document.getElementById("score");
 var timeLeftEl = document.getElementById("")
-var feedback = document.getElementById("#feedback");
+var feedback = document.querySelector("#feedback");
+var answerA = document.getElementById("answerA");
+var answerB = document.getElementById("answerB");
+var answerC = document.getElementById("answerC");
+var answerD = document.getElementById("answerD");
+var answers = document.getElementById("answers");
+var i = 0;
 
-//WHEN I click the start button
-    //connect button from HTML here
+function setTimer() {
+    var timerInt = setInterval(function(){
+        timeLeft--;
+        timer.textContent = "Timer" + seconsLeft;
+
+        if (timeLeft === 0) {
+        endQuiz();
+        }
+        else if (i ===codeQuestions.length) {
+            clearInterval(timerInt);
+        }
+    }, 1000)
+    return (score)
+    };
+
+
+    
 var startQuiz = function(){
     let score = 0;
     let timeLeft = 75;
@@ -56,8 +77,9 @@ var startQuiz = function(){
             ],
         rightAnswer: "d",
         }
-        
+      
     ];
+    console.log(codeQuestions);
     //WHEN I answer a question
     //if question is correct
     //apply the button effect to the switch effect 
@@ -79,34 +101,84 @@ var startQuiz = function(){
         //switch 
 
 //create a function to generate one question at a time
-function showQuestions(event) {
+function showQuestions() {
+    answerA.hidden = false;
+    answerB.hidden = false;
+    answerC.hidden = false;
+    answerD.hidden = false;
 //create element to display the question and the answers
 if (i === codeQuestions.length) {
     //restart quiz
     quizReset();
-
 }
+else {
 //assign text content to the questions and answers
 document.getElementById("questions").textContent = codeQuestions[i]["question"];
 document.getElementById("answerA").textContent = codeQuestions[i]["answers"][0];
 document.getElementById("answerB").textContent = codeQuestions[i]["answers"][1];
 document.getElementById("answerC").textContent = codeQuestions[i]["answers"][2];
 document.getElementById("answerD").textContent = codeQuestions[i]["answers"][3];
-//add eventListeners
-document.getElementById("startButton").addEventListener("click", showQuestions);
+}
 //check to see if question was correct
+document.getElementById("answerA").addEventListener("click", function () {
+    if (codeQuestions[i]["question"][0]=== codeQuestions[i]["rightAnswer"]) {
+        feedback.textContent = "Correct!";
+        score ++;
+    }
+    else {
+        feedback.textContent = "Incorrect!";
+    }
+    i++;
+    showQuestions();
+})
 
 };
-showQuestions();
+
+document.getElementById("answerA").addEventListener("click", function () {
+    if (codeQuestions[i]["question"][1]=== codeQuestions[i]["rightAnswer"]) {
+        feedback.textContent = "Correct!";
+        score ++;
+    }
+    else {
+        feedback.textContent = "Incorrect!";
+    }
+    i++;
+    showQuestions();
+})
+document.getElementById("answerA").addEventListener("click", function () {
+    if (codeQuestions[i]["question"][2]=== codeQuestions[i]["rightAnswer"]) {
+        feedback.textContent = "Correct!";
+        score ++;
+    }
+    else {
+        feedback.textContent = "Incorrect!";
+    }
+    i++;
+    showQuestions();
+})
+
+document.getElementById("answerA").addEventListener("click", function () {
+    if (codeQuestions[i]["question"][3]=== codeQuestions[i]["rightAnswer"]) {
+        feedback.textContent = "Correct!";
+        score ++;
+    }
+    else {
+        feedback.textContent = "Incorrect!";
+    }
+    i++;
+    showQuestions();
+})
+document.getElementById("startButton").addEventListener("click", showQuestions);
 };
 
+function endQuiz(){
+    
+}
 
-
-
-
-
+startQuiz();
 //displayquiz
 
+//add eventListeners
 
 
 
